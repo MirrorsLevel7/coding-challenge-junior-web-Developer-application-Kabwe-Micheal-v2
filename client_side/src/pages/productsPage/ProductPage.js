@@ -9,7 +9,6 @@ const ProductPage = ({setCurrentId}) => {
 
     const products = useSelector(state => state.products);
     const dispatch = useDispatch();
-
     return (
         <div className='all-products'>
            {

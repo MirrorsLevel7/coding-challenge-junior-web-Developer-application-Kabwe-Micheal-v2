@@ -1,0 +1,18 @@
+{
+  "name": "server_side",
+  "version": "1.0.0",
+  "description": "coding_challenge Junior web developper Kabwe Micheal",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Kabwe Micheal",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.8"
+  }
+}

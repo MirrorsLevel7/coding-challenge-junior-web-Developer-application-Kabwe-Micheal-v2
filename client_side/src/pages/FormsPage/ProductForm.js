@@ -52,7 +52,7 @@ const ProductForm = ({currentId, setCurrentId, categories}) => {
     const {name, description, price, image, category} = productsData
     return (
         <div>
-            <h1 style={{textAlign: 'Center'}}>{currentId ?'Edit' : 'Create'} product</h1>
+            <h1 style={{textAlign: 'Center'}}>{currentId ? 'Edit' : 'Create'} product</h1>
             <form className='form' onSubmit={handleSubmit}>
                 <input 
                     className='form-input'
@@ -88,14 +88,21 @@ const ProductForm = ({currentId, setCurrentId, categories}) => {
                     value={image}
                 />
                 <select value={category} name='category' onChange={handleChange} className='form-input'>
+                    <option value='DEFAULT'>choose category ...</option>
                     {
                         categories.map((thecategory, id) =>(
-                            <option  value={thecategory} key={id}>{thecategory}</option>
+                            <option value={id} key={id}>{thecategory}</option>
                         ))
                     }      
                 </select>
                 <input type="submit" className='form-input' value='submit'/>
             </form>
+            <div style={{marginTop: `${3}rem`}}>
+                    <h1 style={{textAlign: 'center'}}>Filter by category</h1>
+                    <button className='product-card-button'>furniture</button>
+                    <button className='product-card-button'>electronics</button>
+                    <button className='product-card-button'>clothing</button>
+            </div>
         </div>
     )
 }

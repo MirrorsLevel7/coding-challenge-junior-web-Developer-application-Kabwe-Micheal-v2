@@ -17,7 +17,6 @@ exports.getProduct = async(req, res)=>{
 exports.createProduct = async(req, res)=>{
     try{
         //we first send the data in the body to the database
-        console.log(req.body);
         const newProduct =  await db.Product.create(req.body);
         //if the product is created we receive back a json object
          res.status(201).json(newProduct);

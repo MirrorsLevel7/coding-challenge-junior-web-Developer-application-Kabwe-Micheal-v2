@@ -10,3 +10,5 @@ export const createProduct  =  async(newProduct) => {
 export const updateProducts = async(id, updatedProduct) => await axios.put(`${API_URL}/${id}`, updatedProduct)
 
 export const deleteProduct = async(id) => await axios.delete(`${API_URL}/${id}`)
+
+export const filterByCategory = async(category) => await axios.get(`${API_URL}/${category}`)

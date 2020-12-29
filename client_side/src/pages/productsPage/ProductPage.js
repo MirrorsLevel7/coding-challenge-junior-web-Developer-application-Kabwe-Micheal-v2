@@ -9,8 +9,11 @@ const ProductPage = ({setCurrentId}) => {
 
     const products = useSelector(state => state.products);
     const dispatch = useDispatch();
+
+    
     return (
-        <div className='all-products'>
+        <div>
+            <div className='all-products'>            
            {
             products.map((product, id) => (
                 <div key={id} className='product'>
@@ -23,15 +26,17 @@ const ProductPage = ({setCurrentId}) => {
                    </div>
                    <p className='product-card-description'>{product.description}</p>
                    <div className='product-card-buttons'>
-                        <button onClick={()=>{dispatch(deleteProduct(product._id))}
-                        } className='product-card-button'>delete</button>
+                        <button onClick={()=> dispatch(deleteProduct(product._id))}
+                         className='product-card-button'>delete</button>
                         <button onClick={()=> setCurrentId(product._id)} className='product-card-button'>edit</button>
                    </div>
                     </div>
                 </div> 
             </div> 
+
             ))
            }
+           </div>
         </div>
     )
 }

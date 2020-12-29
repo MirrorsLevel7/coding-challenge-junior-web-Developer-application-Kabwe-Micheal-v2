@@ -6,8 +6,10 @@ const products =  (products = [], action) =>{
             return [...products, action.payload]
         case 'UPDATE_PRODUCT':
             return products.map(product => product._id === action.payload._id ? action.payload : product)
-        case 'DELTE_PRODUCT': 
+        case 'DELETE_PRODUCT': 
             return products.filter(product => product._id !== action.payload)
+        case 'FILTER_CATEGORY':
+            return [...action.payload ]
         default:
             return products
     }

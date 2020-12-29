@@ -5,7 +5,6 @@ import ProductForm from '../../pages/FormsPage/ProductForm';
 import ProductPage from '../../pages/productsPage/ProductPage';
 
 import '../../pages/productsPage/productPage.css'
-import SearchField from '../../SearchBox/SearchField';
 
 const ProductList = () => {
     const dispatch = useDispatch();
@@ -20,7 +19,6 @@ const ProductList = () => {
 
     return (
         <div>
-            <SearchField/>
             <div className='components'>
                 <ProductPage setCurrentId={setId} /> 
                 <ProductForm currentId={currentId} setCurrentId={setId} categories={categories}/>

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useDispatch } from "react-redux";
-import { createProduct, updateProduct} from '../../Actions/Actions';
+import { createProduct, updateProduct, filterByCategory} from '../../Actions/Actions';
 import { useSelector } from 'react-redux';
 import '../productsPage/productPage.css';
 
@@ -11,17 +11,19 @@ const ProductForm = ({currentId, setCurrentId, categories}) => {
         price: '',
         image: '',
         category: ''
-    })
+    }); 
 
     const dispatch = useDispatch()
     const product = useSelector(state => currentId ? state.products.find((p)=> p._id === currentId) : null)
-
+    // const products = useSelector(state => state.products);
 
     useEffect(() => {
         if(product){
             setProduct(product)
         }
     }, [product])
+
+
     const handleChange = (e)=>{
         const {name, value} = e.target;
         return setProduct({...productsData, [name]: value})
@@ -32,7 +34,6 @@ const ProductForm = ({currentId, setCurrentId, categories}) => {
         if(currentId){
             dispatch(updateProduct(currentId, productsData));
         }else{
-            console.log(productsData);
             dispatch(createProduct(productsData))
         }
         clear();
@@ -48,6 +49,7 @@ const ProductForm = ({currentId, setCurrentId, categories}) => {
             category: ''
         })
     }
+    
 
     const {name, description, price, image, category} = productsData
     return (
@@ -91,7 +93,7 @@ const ProductForm = ({currentId, setCurrentId, categories}) => {
                     <option value='DEFAULT'>choose category ...</option>
                     {
                         categories.map((thecategory, id) =>(
-                            <option value={id} key={id}>{thecategory}</option>
+                            <option value={thecategory} key={id}>{thecategory}</option>
                         ))
                     }      
                 </select>
@@ -99,9 +101,9 @@ const ProductForm = ({currentId, setCurrentId, categories}) => {
             </form>
             <div style={{marginTop: `${3}rem`}}>
                     <h1 style={{textAlign: 'center'}}>Filter by category</h1>
-                    <button className='product-card-button'>furniture</button>
-                    <button className='product-card-button'>electronics</button>
-                    <button className='product-card-button'>clothing</button>
+                    <button onClick={()=> dispatch(filterByCategory('furniture'))} className='product-card-button'>furniture</button>
+                    <button onClick={()=> dispatch(filterByCategory('electronics'))} className='product-card-button'>electronics</button>
+                    <button onClick={()=> dispatch(filterByCategory('clothing'))} className='product-card-button'>clothing</button>
             </div>
         </div>
     )

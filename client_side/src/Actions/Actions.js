@@ -36,3 +36,12 @@ export const deleteProduct = (id) => async(dispatch)=>{
         console.log(error.message)
     }
 }
+
+export const filterByCategory = (category) => async(dispatch)=>{
+    try {
+        const{ data } = await apiCall.filterByCategory(category)
+        dispatch({type: 'FILTER_CATEGORY', payload: data })
+    } catch (error) {
+        console.log(error)
+    }
+}

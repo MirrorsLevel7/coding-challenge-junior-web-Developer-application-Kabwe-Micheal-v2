@@ -31,9 +31,9 @@ exports.createProduct = async(req, res)=>{
 exports.retrieveProduct = async(req, res)=>{
     try{
         //we search the database using the product id that we have access to in the params
-        const foundProduct = await db.Product.findById(req.params.productId)
+        const foundProducts = await db.Product.find({}).where("category").equals(req.params.productId);
         //returns the product if found
-        return res.json(foundProduct);
+        return res.json(foundProducts);
     }
     //else returns the error
     catch(err){
@@ -61,7 +61,7 @@ exports.updateProduct = async(req, res)=>{
 exports.removeProduct = async(req, res)=>{
     try{
         //we first search the database using the provided id and remove the product corresponding to the id
-            await db.Product.findByIdAndRemove({_id: req.params.productId})
+        await db.Product.findByIdAndRemove({_id: req.params.productId})
         //if succesfully deleted we redirect or just alert a message to let us know that the product has been succesfully deleted
         res.json({message: 'the product has been deleted'});
         //else we return the error

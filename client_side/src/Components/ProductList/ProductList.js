@@ -6,6 +6,7 @@ import ProductPage from '../../pages/productsPage/ProductPage';
 
 import '../../pages/productsPage/productPage.css'
 
+
 const ProductList = () => {
     const dispatch = useDispatch();
 
